@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerContr : MonoBehaviour
 {
     public CharacterController controller;
     public Transform PlayerBody;
     public float speed = 12f;
-    
+
+    public int wood = 0;
+    public int iron = 0;
+    public int diamonds = 0;
+
+    public Text IronText;
+    public Text WoodText;
+
     public Animator anim;
     void Start()
     {
@@ -79,6 +86,11 @@ public class PlayerContr : MonoBehaviour
         else
         {
             anim.SetBool("walk", false);
+        }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            anim.Play("Attack");
         }
         controller.Move(move * speed * Time.deltaTime);
     }
